@@ -1,0 +1,5 @@
+{
+  "name": "Hedge Coverage Automator",
+  "description": "Automated workflow for processing hedge coverage reports, including Excel validation, value-pasting, and report generation.",
+  "requestFramePermissions": []
+}
