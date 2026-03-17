@@ -242,23 +242,23 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white/90 font-sans selection:bg-purple-600 selection:text-white">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 font-sans selection:bg-blue-600 selection:text-white">
       {/* Header */}
-      <header className="border-b border-white/10 bg-black/50 backdrop-blur-md sticky top-0 z-10">
+      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-purple-600/20">
+            <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-600/20">
               <FileSpreadsheet size={20} />
             </div>
             <div>
               <h1 className="font-serif text-xl font-medium italic">Hedge Coverage</h1>
-              <p className="text-[10px] uppercase tracking-widest opacity-40 font-mono">Automator v1.0</p>
+              <p className="text-[10px] uppercase tracking-widest opacity-70 font-mono">Automator v1.0</p>
             </div>
           </div>
           <div className="flex items-center gap-4">
             <div className={cn(
               "px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider flex items-center gap-2",
-              isMonday ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : "bg-purple-500/10 text-purple-400 border border-purple-500/20"
+              isMonday ? "bg-emerald-50 text-emerald-600 border border-emerald-100" : "bg-blue-50 text-blue-600 border border-blue-100"
             )}>
               <Clock size={12} />
               {isMonday ? "Monday Distribution Active" : "Non-Monday Schedule"}
@@ -270,27 +270,27 @@ export default function App() {
       <main className="max-w-5xl mx-auto px-6 py-12">
         {/* Progress Stepper */}
         <div className="flex items-center justify-between mb-16 relative">
-          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -z-10" />
+          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-slate-200 -z-10" />
           {[
             { id: 'upload', label: 'Upload', icon: Upload },
             { id: 'validate', label: 'Validate', icon: CheckCircle2 },
             { id: 'export', label: 'Export', icon: Download },
             { id: 'email', label: 'Distribute', icon: Mail },
           ].map((step, idx) => (
-            <div key={step.id} className="flex flex-col items-center gap-3 bg-[#0a0a0a] px-4">
+            <div key={step.id} className="flex flex-col items-center gap-3 bg-[#f8fafc] px-4">
               <div className={cn(
                 "w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 border",
                 currentStep === step.id 
-                  ? "bg-purple-600 text-white border-purple-600 shadow-lg shadow-purple-600/30" 
+                  ? "bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-600/20" 
                   : idx < ['upload', 'validate', 'export', 'email'].indexOf(currentStep)
                     ? "bg-emerald-500 text-white border-emerald-500"
-                    : "bg-white/5 text-white/20 border-white/10"
+                    : "bg-slate-50 text-slate-300 border-slate-200"
               )}>
                 <step.icon size={18} />
               </div>
               <span className={cn(
                 "text-[10px] uppercase tracking-widest font-mono",
-                currentStep === step.id ? "text-purple-400 font-bold" : "text-white/30"
+                currentStep === step.id ? "text-blue-600 font-bold" : "text-slate-600"
               )}>
                 {step.label}
               </span>
@@ -308,12 +308,12 @@ export default function App() {
               className="grid md:grid-cols-2 gap-8"
             >
               {/* Report Upload */}
-              <div className="bg-white/5 rounded-3xl p-8 border border-white/10 shadow-sm">
+              <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
                 <div className="flex items-center gap-3 mb-6">
-                  <FileText className="text-purple-500" size={24} />
+                  <FileText className="text-blue-600" size={24} />
                   <h2 className="font-serif text-xl italic">1. Coverage Report</h2>
                 </div>
-                <p className="text-sm text-white/50 mb-8 leading-relaxed">
+                <p className="text-sm text-slate-700 mb-8 leading-relaxed">
                   Upload the report received via email (Hedge Coverage Report).
                 </p>
                 
@@ -322,7 +322,7 @@ export default function App() {
                     onClick={() => setReportInputMode('file')}
                     className={cn(
                       "text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border transition-all",
-                      reportInputMode === 'file' ? "bg-purple-600 text-white border-purple-600" : "border-white/10 opacity-50"
+                      reportInputMode === 'file' ? "bg-blue-600 text-white border-blue-600" : "border-slate-300 text-slate-600"
                     )}
                   >
                     File Upload
@@ -331,7 +331,7 @@ export default function App() {
                     onClick={() => setReportInputMode('text')}
                     className={cn(
                       "text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border transition-all",
-                      reportInputMode === 'text' ? "bg-purple-600 text-white border-purple-600" : "border-white/10 opacity-50"
+                      reportInputMode === 'text' ? "bg-blue-600 text-white border-blue-600" : "border-slate-300 text-slate-600"
                     )}
                   >
                     Paste Text
@@ -348,12 +348,12 @@ export default function App() {
                     />
                     <div className={cn(
                       "border-2 border-dashed rounded-2xl p-12 flex flex-col items-center justify-center transition-all",
-                      reportFile ? "border-emerald-500/30 bg-emerald-500/5" : "border-white/10 group-hover:border-purple-500/30 group-hover:bg-purple-500/5"
+                      reportFile ? "border-emerald-500/30 bg-emerald-50" : "border-slate-200 group-hover:border-blue-500/30 group-hover:bg-blue-50/50"
                     )}>
                       {reportFile ? (
                         <>
                           <CheckCircle2 className="text-emerald-500 mb-4" size={32} />
-                          <span className="text-sm font-medium">{reportFile.name}</span>
+                          <span className="text-sm font-medium text-slate-700">{reportFile.name}</span>
                           <button 
                             onClick={(e) => { e.preventDefault(); setReportFile(null); }}
                             className="mt-4 text-[10px] uppercase tracking-widest text-red-500 hover:underline"
@@ -363,8 +363,8 @@ export default function App() {
                         </>
                       ) : (
                         <>
-                          <Upload className="text-white/10 mb-4 group-hover:text-purple-500/50 transition-colors" size={32} />
-                          <span className="text-sm text-white/30">Drop report file here</span>
+                          <Upload className="text-slate-500 mb-4 group-hover:text-blue-500/50 transition-colors" size={32} />
+                          <span className="text-sm text-slate-600">Drop report file here</span>
                         </>
                       )}
                     </div>
@@ -375,10 +375,10 @@ export default function App() {
                       value={reportText}
                       onChange={(e) => setReportText(e.target.value)}
                       placeholder="Paste the report email content here..."
-                      className="w-full h-40 p-4 rounded-2xl border border-white/10 bg-black/20 text-white/80 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500/20 resize-none font-mono"
+                      className="w-full h-40 p-4 rounded-2xl border border-slate-200 bg-slate-50 text-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 resize-none font-mono"
                     />
                     {reportText && (
-                      <div className="flex items-center gap-2 text-emerald-400 text-[10px] font-mono uppercase tracking-wider">
+                      <div className="flex items-center gap-2 text-emerald-600 text-[10px] font-mono uppercase tracking-wider">
                         <CheckCircle2 size={12} />
                         Content Captured
                       </div>
@@ -388,12 +388,12 @@ export default function App() {
               </div>
 
               {/* Calc Upload */}
-              <div className="bg-white/5 rounded-3xl p-8 border border-white/10 shadow-sm">
+              <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
                 <div className="flex items-center gap-3 mb-6">
-                  <FileSpreadsheet className="text-purple-500" size={24} />
+                  <FileSpreadsheet className="text-blue-600" size={24} />
                   <h2 className="font-serif text-xl italic">2. Coverage Calc</h2>
                 </div>
-                <p className="text-sm text-white/50 mb-8 leading-relaxed">
+                <p className="text-sm text-slate-700 mb-8 leading-relaxed">
                   Upload the "Hedge Coverage Calc" file for validation.
                 </p>
                 
@@ -406,12 +406,12 @@ export default function App() {
                   />
                   <div className={cn(
                     "border-2 border-dashed rounded-2xl p-12 flex flex-col items-center justify-center transition-all",
-                    calcFile ? "border-emerald-500/30 bg-emerald-500/5" : "border-white/10 group-hover:border-purple-500/30 group-hover:bg-purple-500/5"
+                    calcFile ? "border-emerald-500/30 bg-emerald-50" : "border-slate-200 group-hover:border-blue-500/30 group-hover:bg-blue-50/50"
                   )}>
                     {calcFile ? (
                       <>
                         <CheckCircle2 className="text-emerald-500 mb-4" size={32} />
-                        <span className="text-sm font-medium">{calcFile.name}</span>
+                        <span className="text-sm font-medium text-slate-700">{calcFile.name}</span>
                         <button 
                           onClick={(e) => { e.preventDefault(); setCalcFile(null); }}
                           className="mt-4 text-[10px] uppercase tracking-widest text-red-500 hover:underline"
@@ -421,8 +421,8 @@ export default function App() {
                       </>
                     ) : (
                       <>
-                        <Upload className="text-white/10 mb-4 group-hover:text-purple-500/50 transition-colors" size={32} />
-                        <span className="text-sm text-white/30">Drop calc file here</span>
+                        <Upload className="text-slate-500 mb-4 group-hover:text-blue-500/50 transition-colors" size={32} />
+                        <span className="text-sm text-slate-600">Drop calc file here</span>
                       </>
                     )}
                   </div>
@@ -436,22 +436,22 @@ export default function App() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="w-full max-w-md p-6 bg-red-500/10 border border-red-500/20 rounded-3xl shadow-xl shadow-red-500/5 flex flex-col gap-4"
+                      className="w-full max-w-md p-6 bg-red-50 border border-red-100 rounded-3xl shadow-xl shadow-red-500/5 flex flex-col gap-4"
                     >
                       <div className="flex items-start gap-3">
-                        <AlertCircle className="text-red-400 shrink-0" size={20} />
-                        <p className="text-sm text-red-200 leading-relaxed font-medium">{processError}</p>
+                        <AlertCircle className="text-red-500 shrink-0" size={20} />
+                        <p className="text-sm text-red-700 leading-relaxed font-medium">{processError}</p>
                       </div>
 
                       {availableSheets.length > 0 && (
                         <div className="mt-2">
-                          <label className="text-[10px] uppercase tracking-widest font-mono text-white/40 mb-2 block">Select the correct tab manually:</label>
+                          <label className="text-[10px] uppercase tracking-widest font-mono text-slate-600 mb-2 block">Select the correct tab manually:</label>
                           <div className="grid grid-cols-1 gap-2 max-h-40 overflow-y-auto pr-2 custom-scrollbar">
                             {availableSheets.map(sheet => (
                               <button
                                 key={sheet}
                                 onClick={() => handleManualSheetSelect(sheet)}
-                                className="text-left px-4 py-2 rounded-xl bg-white/5 hover:bg-purple-600 hover:text-white text-xs transition-all border border-white/5"
+                                className="text-left px-4 py-2 rounded-xl bg-slate-50 hover:bg-blue-600 hover:text-white text-xs transition-all border border-slate-100"
                               >
                                 {sheet}
                               </button>
@@ -467,8 +467,8 @@ export default function App() {
                   disabled={(!reportFile && !reportText) || !calcFile || isProcessing}
                   onClick={processFiles}
                   className={cn(
-                    "purple-button flex items-center gap-3 text-sm font-medium transition-all px-12 py-4",
-                    ((!reportFile && !reportText) || !calcFile || isProcessing) ? "opacity-30 cursor-not-allowed grayscale" : "hover:scale-105 active:scale-95 shadow-xl shadow-purple-600/20"
+                    "blue-button flex items-center gap-3 text-sm font-medium transition-all px-12 py-4",
+                    ((!reportFile && !reportText) || !calcFile || isProcessing) ? "opacity-30 cursor-not-allowed grayscale" : "hover:scale-105 active:scale-95 shadow-xl shadow-blue-600/20"
                   )}
                 >
                   {isProcessing ? (
@@ -494,43 +494,43 @@ export default function App() {
               animate={{ opacity: 1, scale: 1 }}
               className="max-w-2xl mx-auto"
             >
-              <div className="bg-white/5 rounded-3xl p-10 border border-white/10 shadow-sm">
+              <div className="bg-white rounded-3xl p-10 border border-slate-200 shadow-sm">
                 <div className="text-center mb-12">
-                  <div className="w-20 h-20 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
                     <CheckCircle2 size={40} />
                   </div>
                   <h2 className="font-serif text-3xl italic mb-2">Validation Successful</h2>
-                  <p className="text-sm text-white/40">All values match the Coverage Breakdown tab.</p>
+                  <p className="text-sm text-slate-600">All values match the Coverage Breakdown tab.</p>
                 </div>
 
                 <div className="space-y-4 mb-12">
-                  <div className="flex items-center justify-between p-4 bg-black/20 rounded-2xl border border-white/5">
+                  <div className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
                     <div className="flex items-center gap-3">
                       <div className="w-3 h-3 rounded-full bg-red-500" />
                       <span className="text-sm font-medium">RED Coverage Match</span>
                     </div>
-                    <span className="font-mono text-xs text-emerald-400 font-bold">MATCHED</span>
+                    <span className="font-mono text-xs text-emerald-600 font-bold">MATCHED</span>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-black/20 rounded-2xl border border-white/5">
+                  <div className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
                     <div className="flex items-center gap-3">
                       <div className="w-3 h-3 rounded-full bg-emerald-500" />
                       <span className="text-sm font-medium">GREEN Coverage Match</span>
                     </div>
-                    <span className="font-mono text-xs text-emerald-400 font-bold">MATCHED</span>
+                    <span className="font-mono text-xs text-emerald-600 font-bold">MATCHED</span>
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-4">
                   <button
                     onClick={downloadProcessedFile}
-                    className="purple-button flex items-center justify-center gap-3 py-5 shadow-xl shadow-purple-600/20"
+                    className="blue-button flex items-center justify-center gap-3 py-5 shadow-xl shadow-blue-600/20"
                   >
                     <Download size={20} />
                     Export Values-Only Report
                   </button>
                   <button
                     onClick={() => setCurrentStep('upload')}
-                    className="text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors py-2"
+                    className="text-[10px] uppercase tracking-widest text-slate-600 hover:text-slate-900 transition-colors py-2"
                   >
                     Start Over
                   </button>
@@ -546,24 +546,24 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               className="max-w-3xl mx-auto"
             >
-              <div className="bg-white/5 rounded-3xl p-10 border border-white/10 shadow-sm overflow-hidden relative">
+              <div className="bg-white rounded-3xl p-10 border border-slate-200 shadow-sm overflow-hidden relative">
                 <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
                   <Mail size={200} />
                 </div>
 
                 <div className="flex items-center justify-between mb-10">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-purple-600/10 text-purple-400 rounded-2xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center">
                       <Send size={24} />
                     </div>
                     <div>
                       <h2 className="font-serif text-2xl italic">Distribution Summary</h2>
-                      <p className="text-xs text-white/30 font-mono uppercase tracking-wider">Ready for dispatch</p>
+                      <p className="text-xs text-slate-600 font-mono uppercase tracking-wider">Ready for dispatch</p>
                     </div>
                   </div>
                   <button 
                     onClick={() => setIsEditingEmail(!isEditingEmail)}
-                    className="text-[10px] uppercase tracking-widest px-4 py-2 rounded-full border border-white/10 hover:bg-white/5 transition-all text-purple-400"
+                    className="text-[10px] uppercase tracking-widest px-4 py-2 rounded-full border border-slate-200 hover:bg-slate-50 transition-all text-blue-600"
                   >
                     {isEditingEmail ? "Save Template" : "Edit Template"}
                   </button>
@@ -573,64 +573,64 @@ export default function App() {
                   {isEditingEmail ? (
                     <div className="space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
                       <div>
-                        <label className="text-[10px] uppercase tracking-widest text-white/30 font-mono mb-1 block">To</label>
+                        <label className="text-[10px] uppercase tracking-widest text-slate-600 font-mono mb-1 block">To</label>
                         <input 
                           type="text"
                           value={emailTo}
                           onChange={(e) => setEmailTo(e.target.value)}
-                          className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500/20"
+                          className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                         />
                       </div>
                       <div>
-                        <label className="text-[10px] uppercase tracking-widest text-white/30 font-mono mb-1 block">BCC (Semicolon separated)</label>
+                        <label className="text-[10px] uppercase tracking-widest text-slate-600 font-mono mb-1 block">BCC (Semicolon separated)</label>
                         <input 
                           type="text"
                           value={emailBcc}
                           onChange={(e) => setEmailBcc(e.target.value)}
-                          className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500/20"
+                          className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                         />
                       </div>
                       <div>
-                        <label className="text-[10px] uppercase tracking-widest text-white/30 font-mono mb-1 block">Subject</label>
+                        <label className="text-[10px] uppercase tracking-widest text-slate-600 font-mono mb-1 block">Subject</label>
                         <input 
                           type="text"
                           value={emailSubject}
                           onChange={(e) => setEmailSubject(e.target.value)}
-                          className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500/20"
+                          className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                         />
                       </div>
                       <div>
-                        <label className="text-[10px] uppercase tracking-widest text-white/30 font-mono mb-1 block">Body</label>
+                        <label className="text-[10px] uppercase tracking-widest text-slate-600 font-mono mb-1 block">Body</label>
                         <textarea 
                           value={emailBody}
                           onChange={(e) => setEmailBody(e.target.value)}
-                          className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500/20 h-24 resize-none"
+                          className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 h-24 resize-none"
                         />
                       </div>
                     </div>
                   ) : (
                     <>
-                      <div className="grid grid-cols-[100px_1fr] gap-4 items-center border-b border-white/5 pb-4">
-                        <span className="text-[10px] uppercase tracking-widest text-white/30 font-mono">To</span>
-                        <span className="text-sm font-medium">{emailTo}</span>
+                      <div className="grid grid-cols-[100px_1fr] gap-4 items-center border-b border-slate-200 pb-4">
+                        <span className="text-[10px] uppercase tracking-widest text-slate-600 font-mono">To</span>
+                        <span className="text-sm font-medium text-slate-800">{emailTo}</span>
                       </div>
-                      <div className="grid grid-cols-[100px_1fr] gap-4 items-center border-b border-white/5 pb-4">
-                        <span className="text-[10px] uppercase tracking-widest text-white/30 font-mono">BCC</span>
+                      <div className="grid grid-cols-[100px_1fr] gap-4 items-center border-b border-slate-200 pb-4">
+                        <span className="text-[10px] uppercase tracking-widest text-slate-600 font-mono">BCC</span>
                         <div className="flex flex-wrap gap-2">
                           {emailBcc.split(';').map((email, i) => (
-                            <span key={i} className="px-2 py-1 bg-white/5 rounded text-[10px]">{email.trim()}</span>
+                            <span key={i} className="px-2 py-1 bg-slate-200 rounded text-[10px] text-slate-700">{email.trim()}</span>
                           ))}
                         </div>
                       </div>
-                      <div className="grid grid-cols-[100px_1fr] gap-4 items-center border-b border-white/5 pb-4">
-                        <span className="text-[10px] uppercase tracking-widest text-white/30 font-mono">Subject</span>
-                        <span className="text-sm italic font-serif">{emailSubject}</span>
+                      <div className="grid grid-cols-[100px_1fr] gap-4 items-center border-b border-slate-200 pb-4">
+                        <span className="text-[10px] uppercase tracking-widest text-slate-600 font-mono">Subject</span>
+                        <span className="text-sm italic font-serif text-slate-800">{emailSubject}</span>
                       </div>
                     </>
                   )}
                   <div className="grid grid-cols-[100px_1fr] gap-4 items-start pt-2">
-                    <span className="text-[10px] uppercase tracking-widest text-white/30 font-mono">Attachment</span>
-                    <div className="flex items-center gap-2 text-emerald-400 bg-emerald-500/5 px-3 py-2 rounded-xl border border-emerald-500/10">
+                    <span className="text-[10px] uppercase tracking-widest text-slate-600 font-mono">Attachment</span>
+                    <div className="flex items-center gap-2 text-emerald-700 bg-emerald-50 px-3 py-2 rounded-xl border border-emerald-200">
                       <FileSpreadsheet size={16} />
                       <span className="text-xs font-bold">Hedge_Coverage_Report.xlsx</span>
                     </div>
@@ -640,23 +640,23 @@ export default function App() {
                 <div className="flex flex-col gap-4">
                   <a
                     href={getEmailLink()}
-                    className="purple-button flex items-center justify-center gap-3 py-5 shadow-xl shadow-purple-600/20 text-center"
+                    className="blue-button flex items-center justify-center gap-3 py-5 shadow-xl shadow-blue-600/20 text-center"
                   >
                     <Mail size={20} />
                     Open Email Draft
                   </a>
                   <button
                     onClick={() => setCurrentStep('upload')}
-                    className="text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors py-2"
+                    className="text-[10px] uppercase tracking-widest text-slate-600 hover:text-slate-900 transition-colors py-2"
                   >
                     Process Another Report
                   </button>
                 </div>
 
                 {!isMonday && (
-                  <div className="mt-8 p-4 bg-purple-500/5 border border-purple-500/10 rounded-2xl flex items-start gap-3">
-                    <AlertCircle className="text-purple-400 shrink-0" size={18} />
-                    <p className="text-[11px] text-purple-200/70 leading-relaxed">
+                  <div className="mt-8 p-4 bg-blue-50 border border-blue-100 rounded-2xl flex items-start gap-3">
+                    <AlertCircle className="text-blue-600 shrink-0" size={18} />
+                    <p className="text-[11px] text-blue-700 leading-relaxed">
                       <strong>Note:</strong> Today is not Monday. According to SOP, this distribution is typically performed on <strong>Mondays Only</strong>. Please verify if you wish to proceed.
                     </p>
                   </div>
@@ -668,17 +668,17 @@ export default function App() {
       </main>
 
       {/* Footer / Info */}
-      <footer className="max-w-5xl mx-auto px-6 py-12 border-t border-white/5 mt-12">
+      <footer className="max-w-5xl mx-auto px-6 py-12 border-t border-slate-200 mt-12">
         <div className="grid md:grid-cols-3 gap-12">
           <div>
-            <h4 className="text-[10px] uppercase tracking-widest font-mono mb-4 opacity-30">Storage Path</h4>
-            <p className="text-xs font-mono bg-white/5 p-3 rounded-lg border border-white/5 break-all text-white/50">
+            <h4 className="text-[10px] uppercase tracking-widest font-mono mb-4 opacity-60">Storage Path</h4>
+            <p className="text-xs font-mono bg-slate-100 p-3 rounded-lg border border-slate-200 break-all text-slate-800">
               F:\Trading Desk\Client Files\Hedge Coverage Data
             </p>
           </div>
           <div>
-            <h4 className="text-[10px] uppercase tracking-widest font-mono mb-4 opacity-30">SOP Reference</h4>
-            <ul className="text-xs space-y-2 text-white/40">
+            <h4 className="text-[10px] uppercase tracking-widest font-mono mb-4 opacity-60 text-slate-600">SOP Reference</h4>
+            <ul className="text-xs space-y-2 text-slate-700">
               <li>• Save report in Clients Folder</li>
               <li>• Validate RED/GREEN matches</li>
               <li>• Paste values (remove formulas)</li>
@@ -686,9 +686,9 @@ export default function App() {
             </ul>
           </div>
           <div>
-            <h4 className="text-[10px] uppercase tracking-widest font-mono mb-4 opacity-30">System Status</h4>
-            <div className="flex items-center gap-2 text-xs text-emerald-400">
-              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <h4 className="text-[10px] uppercase tracking-widest font-mono mb-4 opacity-60 text-slate-600">System Status</h4>
+            <div className="flex items-center gap-2 text-xs text-emerald-700">
+              <div className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
               Operational
             </div>
           </div>
@@ -704,8 +704,8 @@ export default function App() {
           --font-mono: 'JetBrains Mono', monospace;
         }
 
-        .purple-button {
-          background-color: #7c3aed;
+        .blue-button {
+          background-color: #2563eb;
           color: white;
           border-radius: 9999px;
           padding: 12px 24px;
@@ -713,12 +713,12 @@ export default function App() {
           transition: all 0.2s ease;
         }
 
-        .purple-button:hover {
-          background-color: #6d28d9;
+        .blue-button:hover {
+          background-color: #1d4ed8;
           transform: translateY(-1px);
         }
 
-        .purple-button:active {
+        .blue-button:active {
           transform: translateY(0);
         }
 
@@ -726,10 +726,10 @@ export default function App() {
           width: 4px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(0, 0, 0, 0.05);
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #7c3aed;
+          background: #2563eb;
           border-radius: 10px;
         }
       `}} />
